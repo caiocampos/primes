@@ -12,7 +12,6 @@ import { isEven, isOdd, PrimeNumber } from '@caiocampos/primes';
 })
 export class AppComponent implements OnInit {
   ready = new BehaviorSubject<boolean>(false);
-  title = 'primes';
   module: {
     PrimeNumber: typeof PrimeNumber,
     isOdd: typeof isOdd,
