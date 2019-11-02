@@ -12,6 +12,7 @@ before_install:
   - curl https://sh.rustup.rs -sSf | bash -s -- -y
   - export PATH="$HOME/.cargo/bin:$PATH"
   - curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+  - npm run build-wasm
 
 before_script:
   - npm install -g @angular/cli
@@ -20,7 +21,6 @@ jobs:
   include:
     - stage: pages
       script:
-        - npm run build-wasm
         - ng lint
         - ng build --prod --base-href /primes/
         - cd dist/primes
@@ -34,8 +34,7 @@ jobs:
         on:
           branch: master
     - stage: npm
-      script:
-        - npm run build-wasm
+      script: skip
       before_deploy:
         - cd primes-rs/pkg
         - rm -f .gitignore
