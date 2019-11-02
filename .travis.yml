@@ -14,13 +14,11 @@ before_install:
   - curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
   - npm run build-wasm
 
-before_script:
-  - npm install -g @angular/cli
-
 jobs:
   include:
     - stage: pages
       script:
+        - npm install -g @angular/cli
         - ng lint
         - ng build --prod --base-href /primes/
         - cd dist/primes
@@ -38,6 +36,8 @@ jobs:
       before_deploy:
         - cd primes-rs/pkg
         - rm -f .gitignore
+        - npm install -g json
+        - json -I -f package.json -e 'this.publishConfig={},this.publishConfig.access="public"'
       deploy: &npm
         provider: npm
         skip_cleanup: true
