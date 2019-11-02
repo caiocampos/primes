@@ -1,0 +1,49 @@
+language: node_js
+node_js:
+  - "12"
+dist: bionic
+sudo: required
+
+branches:
+  only:
+  - master
+
+before_install:
+  - curl https://sh.rustup.rs -sSf | bash -s -- -y
+  - echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
+  - curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+before_script:
+  - npm install -g @angular/cli
+
+jobs:
+  include:
+    - stage: pages
+      script:
+        - npm run build-wasm
+        - ng lint
+        - ng build --prod --base-href /primes/
+        - cd dist/primes
+        - cp index.html 404.html
+        - cd ../..
+      deploy: &pages
+        provider: pages
+        skip_cleanup: true
+        github-token: $GITHUB_TOKEN
+        local_dir: dist/primes
+        on:
+          branch: master
+    - stage: npm
+      script:
+        - npm run build-wasm
+      before_deploy:
+        - cd primes-rs/pkg
+        - rm -f .gitignore
+      deploy: &npm
+        provider: npm
+        skip_cleanup: true
+        api_key: $NPM_TOKEN
+        email: "caio.campos1204@gmail.com"
+        tag: next
+        on:
+          branch: master
