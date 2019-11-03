@@ -1,14 +1,19 @@
 [package]
 name = "primes"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Caio O Campos <caio.campos1204@gmail.com.br>"]
 edition = "2018"
 
 [dependencies]
 wasm-bindgen = "0.2"
 
+[dependencies.rand]
+version = "0.7"
+features = ["wasm-bindgen"]
+
 [lib]
 crate-type = ["cdylib", "rlib"]
+path = "src/lib/mod.rs"
 
 [profile.release]
 lto = true

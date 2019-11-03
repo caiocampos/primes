@@ -1,74 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Observable, BehaviorSubject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import { isEven, isOdd, PrimeNumber } from '@caiocampos/primes';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  ready = new BehaviorSubject<boolean>(false);
-  module: {
-    PrimeNumber: typeof PrimeNumber,
-    isOdd: typeof isOdd,
-    isEven: typeof isEven
-  };
+export class AppComponent {
+  title = 'Primes';
+  range = [...Array(90).keys()];
+  rangeBegin = 0;
+  rangeEnd = 99999;
+  randomPrime = 3;
+  randomPrimeRng = 3;
 
-  ngOnInit(): void {
-    import('@caiocampos/primes')
-      .then(mod => {
-        this.ready.next(true);
-        this.module = mod;
-      })
-      .catch(console.error);
-  }
-
-  public nthPrimeNumber(input: number): Observable<number> {
-    return this.ready.pipe(
-      filter(value => value),
-      map(() => {
-        return this.module.PrimeNumber.nth(input);
-      })
-    );
-  }
+  constructor(private app: AppService) { }
 
   public primeRangeList(begin: number, end: number): Observable<Uint32Array> {
-    return this.ready.pipe(
-      filter(value => value),
-      map(() => {
-        return this.module.PrimeNumber.rangeList(begin, end);
-      })
-    );
+    return this.app.primeRangeList(begin, end);
+  }
+
+  public randomPrimeNumber(): Observable<number | undefined> {
+    return this.app.randomPrimeNumber();
+  }
+
+  public closestPrime(input: number, asc: boolean): Observable<number | undefined> {
+    return this.app.closestPrime(input, asc);
   }
 
   public isPrimeNumber(input: number): Observable<boolean> {
-    return this.ready.pipe(
-      filter(value => value),
-      map(() => {
-        return this.module.PrimeNumber.isPrime(input);
-      })
-    );
-  }
-
-  public isEven(input: number): Observable<boolean> {
-    return this.ready.pipe(
-      filter(value => value),
-      map(() => {
-        return this.module.isEven(input);
-      })
-    );
-  }
-
-  public isOdd(input: number): Observable<boolean> {
-    return this.ready.pipe(
-      filter(value => value),
-      map(() => {
-        return this.module.isOdd(input);
-      })
-    );
+    return this.app.isPrimeNumber(input);
   }
 }

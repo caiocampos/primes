@@ -1,13 +1,24 @@
-<div>3 is even? {{isEven(3) | async}}</div>
-<div>4 is even? {{isEven(4) | async}}</div>
-<div>5 is odd? {{isOdd(5) | async}}</div>
-<div>6 is odd? {{isOdd(6) | async}}</div>
-<div>3 is prime? {{isPrimeNumber(3) | async}}</div>
-<div>4 is prime? {{isPrimeNumber(4) | async}}</div>
-<div>5 is prime? {{isPrimeNumber(5) | async}}</div>
-<div>6 is prime? {{isPrimeNumber(6) | async}}</div>
-<div>7 is prime? {{isPrimeNumber(7) | async}}</div>
+<div class="title">
+    <h1>Bem vindo à {{title}}!</h1>
+</div>
+<div>Número primo maior que {{rangeEnd}}: {{closestPrime(rangeEnd, true) | async}}</div>
+<div>Número primo menor que {{rangeEnd}}: {{closestPrime(rangeEnd, false) | async}}</div>
+<div>Primo aleatório: {{randomPrimeNumber() | async}}</div>
 
-<div *ngFor="let prime of primeRangeList(0,99999) | async">
-    {{prime}}
+<div class="prime-table">
+    <div class="prime-table-title">É primo?</div>
+    <div class="prime-table-elements">
+        <div *ngFor="let i of range" [ngClass]="(isPrimeNumber(i) | async) ? 'pass' : 'fail'">
+            {{i}}
+        </div>
+    </div>
+</div>
+
+<div class="prime-table">
+    <div class="prime-table-title">Números primos entre {{rangeBegin}} e {{rangeEnd}}</div>
+    <div class="prime-table-elements">
+        <div *ngFor="let prime of primeRangeList(rangeBegin,rangeEnd) | async">
+            {{prime}}
+        </div>
+    </div>
 </div>
