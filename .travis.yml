@@ -4,10 +4,6 @@ node_js:
 dist: bionic
 sudo: required
 
-branches:
-  only:
-  - master
-
 before_install:
   - curl https://sh.rustup.rs -sSf | bash -s -- -y
   - export PATH="$HOME/.cargo/bin:$PATH"
