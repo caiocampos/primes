@@ -45,4 +45,5 @@ jobs:
         email: "caio.campos1204@gmail.com"
         tag: next
         on:
-          branch: master
+          tags: true
+
