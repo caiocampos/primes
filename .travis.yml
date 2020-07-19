@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "12"
+  - "14"
 dist: bionic
 sudo: required
 
@@ -14,7 +14,7 @@ jobs:
   include:
     - stage: pages
       script:
-        - npm install -g @angular/cli
+        - npm install -g @angular/cli@8
         - ng lint
         - ng build --prod --base-href /primes/
         - cd dist/primes
