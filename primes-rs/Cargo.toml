@@ -1,6 +1,6 @@
 [package]
 name = "primes"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Caio O Campos <caio.campos1204@gmail.com.br>"]
 edition = "2018"
 
