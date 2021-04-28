@@ -55,7 +55,7 @@ impl PrimeNumber {
             Greater => None,
             Equal => Self::prime(begin),
             _ => {
-                let orig = thread_rng().gen_range(begin, end + 1);
+                let orig = thread_rng().gen_range(begin..=end);
                 if Self::is_prime(orig) {
                     return Some(orig);
                 }
