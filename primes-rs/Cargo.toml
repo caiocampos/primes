@@ -5,7 +5,7 @@ authors = ["Caio O Campos <caio.campos1204@gmail.com.br>"]
 edition = "2018"
 
 [dependencies]
-wasm-bindgen = "~0.2.73"
+wasm-bindgen = "~0.2.74"
 rand = "~0.8.3"
 getrandom = { version = "0.2", features = ["js"] }
 
