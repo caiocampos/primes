@@ -14,9 +14,9 @@ jobs:
   include:
     - stage: pages
       script:
-        - npm install -g @angular/cli@11
+        - npm install -g @angular/cli@12
         - ng lint
-        - ng build --prod --base-href /primes/
+        - ng build --configuration production --base-href /primes/
         - cd dist/primes
         - cp index.html 404.html
         - cd ../..
