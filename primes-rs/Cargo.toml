@@ -6,7 +6,7 @@ edition = "2018"
 
 [dependencies]
 wasm-bindgen = "~0.2.74"
-rand = "~0.8.3"
+rand = "~0.8.4"
 getrandom = { version = "0.2", features = ["js"] }
 
 [lib]
