@@ -111,7 +111,6 @@
       }
     }
   },
-  "defaultProject": "primes",
   "cli": {
     "analytics": "dc180bdd-0969-4204-a002-97233d0f3803"
   }
