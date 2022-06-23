@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Install
-      run: npm install
+      run: npm install --legacy-peer-deps
     - name: Build lib
       run: npm run build-wasm
     - name: Build
