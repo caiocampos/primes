@@ -39,4 +39,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
-        folder: dist/primes
+        folder: dist/primes/browser
