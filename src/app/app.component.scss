@@ -1,41 +1,48 @@
 :host {
-	.title {
-		text-align: center;
-	}
+  .title {
+    text-align: center;
+  }
 
-	.prime-table {
-		background-color: darkblue;
-		width: 90vw;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 10px;
-		padding: 3px;
+  .desc {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 3px;
+  }
+  .prime-table {
+    background-color: darkblue;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 3px;
 
-		&-title {
-			font-size: 30px;
-			color: white;
-			text-align: center;
-		}
+    &-title {
+      font-size: 30px;
+      color: white;
+      text-align: center;
+    }
 
-		&-elements {
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
+    &-elements {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
 
-			& > div {
-				background-color: rgba($color: white, $alpha: 0.9);
-				margin: 3px;
-				padding: 10px;
-				font-size: 20px;
-			}
-		}
-	}
+      & > div {
+        background-color: rgba($color: white, $alpha: 0.9);
+        margin: 3px;
+        padding: 10px;
+        font-size: 20px;
+      }
+    }
+  }
 
-	.pass {
-		border: 3px solid yellowgreen;
-	}
+  .pass {
+    border: 3px solid yellowgreen;
+  }
 
-	.fail {
-		border: 3px solid red;
-	}
+  .fail {
+    border: 3px solid red;
+  }
 }

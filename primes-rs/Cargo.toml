@@ -1,13 +1,13 @@
 [package]
 name = "primes"
-version = "0.2.4"
+version = "0.2.5"
 authors = ["Caio O Campos <caio.campos1204@gmail.com.br>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
-wasm-bindgen = "~0.2.81"
+wasm-bindgen = "~0.2.95"
 rand = "~0.8.5"
-getrandom = { version = "~0.2.7", features = ["js"] }
+getrandom = { version = "~0.2.15", features = ["js"] }
 
 [lib]
 crate-type = ["cdylib", "rlib"]

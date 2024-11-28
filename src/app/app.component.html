@@ -1,24 +1,30 @@
 <div class="title">
     <h1>Bem vindo à {{title}}!</h1>
 </div>
-<div>Número primo maior que {{rangeEnd}}: {{closestPrime(rangeEnd, true) | async}}</div>
-<div>Número primo menor que {{rangeEnd}}: {{closestPrime(rangeEnd, false) | async}}</div>
-<div>Primo aleatório: {{randomPrimeNumber() | async}}</div>
+<div class="desc">
+    <div>Número primo maior que {{rangeEnd}}: {{closestPrime(rangeEnd, true) | async}}</div>
+    <div>Número primo menor que {{rangeEnd}}: {{closestPrime(rangeEnd, false) | async}}</div>
+    <div>Primo aleatório: {{randomPrimeNumber() | async}}</div>
+</div>
 
 <div class="prime-table">
     <div class="prime-table-title">É primo?</div>
     <div class="prime-table-elements">
-        <div *ngFor="let i of range" [ngClass]="(isPrimeNumber(i) | async) ? 'pass' : 'fail'">
+        @for (i of range; track i) {
+        <div [class]="(isPrimeNumber(i) | async) ? 'pass' : 'fail'">
             {{i}}
         </div>
+        }
     </div>
 </div>
 
 <div class="prime-table">
     <div class="prime-table-title">Números primos entre {{rangeBegin}} e {{rangeEnd}}</div>
     <div class="prime-table-elements">
-        <div *ngFor="let prime of primeRangeList(rangeBegin,rangeEnd) | async">
+        @for (prime of (primeRangeList(rangeBegin,rangeEnd) | async); track prime) {
+        <div>
             {{prime}}
         </div>
+        }
     </div>
 </div>

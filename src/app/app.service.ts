@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { isEven, isOdd, PrimeNumber } from 'primes-rs/pkg/primes';
+import { isEven, isOdd, PrimeNumber } from '../../primes-rs/pkg/primes';
 
 interface Module {
   PrimeNumber: typeof PrimeNumber;
@@ -12,14 +12,14 @@ interface Module {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppService {
-  module = new BehaviorSubject<Module>(null);
+  module = new BehaviorSubject<Module | null>(null);
 
   constructor() {
     const appComp = this;
-    import('primes-rs/pkg/primes')
+    import('../../primes-rs/pkg/primes')
       .then((mod: Module) => {
         appComp.module.next(mod);
       })
@@ -34,7 +34,10 @@ export class AppService {
     return this.run((mod) => mod.PrimeNumber.nth(input));
   }
 
-  public randomPrimeInRange(begin: number, end: number): Observable<number | undefined> {
+  public randomPrimeInRange(
+    begin: number,
+    end: number
+  ): Observable<number | undefined> {
     return this.run((mod) => mod.PrimeNumber.randomRange(begin, end));
   }
 
@@ -42,7 +45,10 @@ export class AppService {
     return this.run((mod) => mod.PrimeNumber.random());
   }
 
-  public closestPrime(input: number, asc: boolean): Observable<number | undefined> {
+  public closestPrime(
+    input: number,
+    asc: boolean
+  ): Observable<number | undefined> {
     return this.run((mod) => mod.PrimeNumber.closestPrime(input, asc));
   }
 
@@ -64,7 +70,7 @@ export class AppService {
 
   private run<T>(f: (mod: Module) => T): Observable<T> {
     return this.module.pipe(
-      filter(value => value !== null),
+      filter((value) => value !== null),
       map(f)
     );
   }
