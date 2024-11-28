@@ -32,7 +32,7 @@ jobs:
       run: npx ng build --configuration production --base-href /primes/
     - name: Adjustment
       run: |
-           cd dist/primes
+           cd dist/primes/browser
            cp index.html 404.html
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
