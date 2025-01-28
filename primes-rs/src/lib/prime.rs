@@ -55,7 +55,7 @@ impl PrimeNumber {
             Greater => None,
             Equal => Self::prime(begin),
             _ => {
-                let orig = thread_rng().gen_range(begin..=end);
+                let orig = rand::rng().random_range(begin..=end);
                 if Self::is_prime(orig) {
                     return Some(orig);
                 }
@@ -82,12 +82,12 @@ impl PrimeNumber {
 
     #[wasm_bindgen]
     pub fn random() -> Option<u32> {
-        let mut generator = thread_rng();
-        match generator.gen() {
+        let mut generator = rand::rng();
+        match generator.random() {
             n @ 0..=99 => Self::closest_prime(n, true),
             n if n >= MAX_PRIME => Some(MAX_PRIME),
             n => iif! {
-                generator.gen() => Self::closest_prime(n, true);
+                generator.random() => Self::closest_prime(n, true);
                 Self::closest_prime(n, false)
             },
         }
