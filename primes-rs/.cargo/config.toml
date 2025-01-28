@@ -1,0 +1,2 @@
+[target.wasm-unknown-unknown]
+rustflags = ['--cfg getrandom_backend="wasm_js"']
