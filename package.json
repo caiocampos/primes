@@ -19,7 +19,7 @@
     "@angular/compiler": "^20.2.4",
     "@angular/core": "^20.2.4",
     "@angular/forms": "^20.1.6",
-    "@angular/platform-browser": "^20.1.2",
+    "@angular/platform-browser": "^20.2.4",
     "@angular/platform-browser-dynamic": "^20.2.4",
     "@angular/router": "^20.2.4",
     "rxjs": "~7.8.2",
