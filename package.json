@@ -35,7 +35,7 @@
     "karma-chrome-launcher": "~3.2",
     "karma-coverage": "~2.2",
     "karma-jasmine": "~5.1",
-    "karma-jasmine-html-reporter": "~2.1",
+    "karma-jasmine-html-reporter": "~2.2",
     "typescript": "~5.8"
   }
 }
