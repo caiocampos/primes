@@ -8,14 +8,13 @@ on:
       - '!.github/**'
   workflow_dispatch:
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [24.x]
 
     steps:
     - uses: actions/checkout@v7
@@ -23,12 +22,8 @@ jobs:
         persist-credentials: false
     - name: Install wasm-pack
       run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v7
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Install
-      run: yarn install
+    - name: Run tests
+      working-directory: ./primes-rs
+      run: cargo test --verbose
     - name: Build lib
-      run: npm run build-wasm
+      run: sh ./build-lib.sh

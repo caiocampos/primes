@@ -30,7 +30,7 @@ jobs:
     - name: Install
       run: yarn install
     - name: Build lib
-      run: npm run build-wasm
+      run: npm run clear-build-lib
     - name: Build
       run: npx ng build --configuration production --base-href /primes/
     - name: Adjustment
