@@ -31,6 +31,6 @@
     "@angular/cli": "^22.1.4",
     "@angular/compiler-cli": "^22.1.2",
     "typescript": "~6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   }
 }
